@@ -1,38 +1,52 @@
-import express from "express";
-import cors from "cors";
-import { config } from "dotenv";
-import mongoose from "mongoose";
-
-config();
-
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const cookieParser = require("cookie-parser");
 const app = express();
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    methods: ["POST", "GET", "PUT", "DELETE"],
-  })
-);
+const path = require('path');
+const DB_MONGO = require('./app/config/db.config')
+const _CONST = require('./app/config/constant')
+// const { sendEmailNotification } = require('./app/kafka/consumer');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+//router
+const authRoute = require('./app/routers/auth');
+const userRoute = require('./app/routers/user');
+const productRoute = require('./app/routers/product');
+const categoryRoute = require('./app/routers/category');
+const uploadFileRoute = require('./app/routers/uploadFile');
+const newsRoute = require('./app/routers/news');
+const orderRoute = require('./app/routers/order');
+const statisticalRoute = require('./app/routers/statistical');
+const paymentRoute = require('./app/routers/paypal');
 
-app.use("/", (req, res) => {
-  res.send("Server on...");
-});
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
+app.use(express.static('public'));
 
-mongoose
-  .connect(
-    "mongodb+srv://tk251002:KJ7h2HKPGdp283As@cluster0.rjugmb2.mongodb.net/ecommerce?retryWrites=true&w=majority"
-  )
-  .then(() => {
-    console.log("Connect DB success!");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+mongoose.connect(DB_MONGO.URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Connected to MongoDB.');
+    })
+    .catch((error) => {
+        console.error('MongoDB connection error:', error);
+    });
 
-const port = process.env.PORT || 8888;
+app.use('/api/auth', authRoute);
+app.use('/api/user', userRoute);
+app.use('/api/product', productRoute);
+app.use('/api/category', categoryRoute);
+app.use('/api/uploadFile', uploadFileRoute);
+app.use('/api/news', newsRoute);
+app.use('/api/statistical', statisticalRoute);
+app.use('/api/order', orderRoute);
+app.use('/api/payment', paymentRoute);
+app.use('/uploads', express.static('uploads'));
+// sendEmailNotification();
 
-app.listen(port, () => {
-  console.log(`Server is running on the port: ${port}`);
+const PORT = process.env.PORT || _CONST.PORT;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
 });
