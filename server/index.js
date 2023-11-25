@@ -10,6 +10,8 @@ const _CONST = require('./app/config/constant')
 
 const authRoute = require('./app/routers/auth');
 const userRoute = require('./app/routers/user');
+const productRoute = require('./app/routers/product');
+const categoryRoute = require('./app/routers/category');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -26,6 +28,8 @@ mongoose.connect(DB_MONGO.URL, { useNewUrlParser: true, useUnifiedTopology: true
 
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
+app.use('/api/product', productRoute);
+app.use('/api/category', categoryRoute);
 
 const PORT = process.env.PORT || _CONST.PORT;
 
