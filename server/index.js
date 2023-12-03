@@ -12,6 +12,10 @@ const authRoute = require('./app/routers/auth');
 const userRoute = require('./app/routers/user');
 const productRoute = require('./app/routers/product');
 const categoryRoute = require('./app/routers/category');
+const uploadFileRoute = require('./app/routers/uploadFile');
+const newsRoute = require('./app/routers/news');
+const orderRoute = require('./app/routers/order');
+const statisticalRoute = require('./app/routers/statistical');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -30,6 +34,10 @@ app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
 app.use('/api/product', productRoute);
 app.use('/api/category', categoryRoute);
+app.use('/api/uploadFile', uploadFileRoute);
+app.use('/api/news', newsRoute);
+app.use('/api/statistical', statisticalRoute);
+app.use('/api/order', orderRoute);
 
 const PORT = process.env.PORT || _CONST.PORT;
 
