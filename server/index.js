@@ -7,7 +7,9 @@ const app = express();
 const path = require('path');
 const DB_MONGO = require('./app/config/db.config')
 const _CONST = require('./app/config/constant')
+// const { sendEmailNotification } = require('./app/kafka/consumer');
 
+//router
 const authRoute = require('./app/routers/auth');
 const userRoute = require('./app/routers/user');
 const productRoute = require('./app/routers/product');
@@ -16,6 +18,7 @@ const uploadFileRoute = require('./app/routers/uploadFile');
 const newsRoute = require('./app/routers/news');
 const orderRoute = require('./app/routers/order');
 const statisticalRoute = require('./app/routers/statistical');
+const paymentRoute = require('./app/routers/paypal');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -38,6 +41,9 @@ app.use('/api/uploadFile', uploadFileRoute);
 app.use('/api/news', newsRoute);
 app.use('/api/statistical', statisticalRoute);
 app.use('/api/order', orderRoute);
+app.use('/api/payment', paymentRoute);
+app.use('/uploads', express.static('uploads'));
+// sendEmailNotification();
 
 const PORT = process.env.PORT || _CONST.PORT;
 
