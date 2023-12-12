@@ -77,22 +77,22 @@ const paypalController = {
           const { paymentId, token, PayerID } = req.query;
       
           // Gửi yêu cầu lấy Access Token
-        //   const requestBody1 = {
-        //     grant_type: 'client_credentials',
-        //   };
-        //   const response1 = await axios.post(
-        //     'https://api.sandbox.paypal.com/v1/oauth2/token',
-        //     requestBody1,
-        //     {
-        //       headers: {
-        //         'Content-Type': 'application/x-www-form-urlencoded',
-        //         Authorization: `Basic ${Buffer.from(
-        //           `${process.env.PAYPAL_CLIENT_ID}:${process.env.PAYPAL_CLIENT_SECRET}`
-        //         ).toString('base64')}`,
-        //       },
-        //     }
-        //   );
-        //   const accessToken = response1.data.access_token;
+          const requestBody1 = {
+            grant_type: 'client_credentials',
+          };
+          const response1 = await axios.post(
+            'https://api.sandbox.paypal.com/v1/oauth2/token',
+            requestBody1,
+            {
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                Authorization: `Basic ${Buffer.from(
+                  `${process.env.PAYPAL_CLIENT_ID}:${process.env.PAYPAL_CLIENT_SECRET}`
+                ).toString('base64')}`,
+              },
+            }
+          );
+          const accessToken = response1.data.access_token;
       
           // Gửi yêu cầu execute payment
           const requestBody2 = {
