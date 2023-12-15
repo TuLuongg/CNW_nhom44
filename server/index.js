@@ -7,7 +7,7 @@ const app = express();
 const path = require('path');
 const DB_MONGO = require('./app/config/db.config')
 const _CONST = require('./app/config/constant')
-// const { sendEmailNotification } = require('./app/kafka/consumer');
+
 
 //router
 const authRoute = require('./app/routers/auth');
@@ -43,7 +43,7 @@ app.use('/api/statistical', statisticalRoute);
 app.use('/api/order', orderRoute);
 app.use('/api/payment', paymentRoute);
 app.use('/uploads', express.static('uploads'));
-// sendEmailNotification();
+
 
 const PORT = process.env.PORT || _CONST.PORT;
 
