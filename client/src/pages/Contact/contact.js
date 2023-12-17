@@ -70,7 +70,7 @@ const Contact = () => {
                             <div class="row">
                                 <div class="col-lg-4">
                                     <img class="rounded-circle shadow-1-strong mb-4"
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" alt="avatar"
+                                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar"
                                     />
                                     <h5 class="mb-3">Lương Xuân Tú</h5>
                                     <p>20200549</p>
@@ -110,7 +110,7 @@ const Contact = () => {
 
                                 <div class="col-lg-4 d-none d-lg-block">
                                     <img class="rounded-circle shadow-1-strong mb-4"
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar"
+                                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar"
                                     />
                                     <h5 class="mb-3">Nguyễn Công Tú</h5>
                                     <p>20204800</p>
