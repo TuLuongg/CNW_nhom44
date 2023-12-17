@@ -1,0 +1,43 @@
+.create_event{
+    background-color: #ececec;  
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;  
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 25px;
+}
+
+#dialog{
+    max-width: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+    padding: 30px;
+    margin: 0px 10% 80px 10%;
+}
+
+.divider{
+    border-left: 1px solid darkgray;
+    height: 100%;
+}
+
+
+#test{
+    &:before{
+        width:0px;
+        height:0px;
+        border-top: 30px solid #c41d7f;
+        border-bottom: 30px solid transparent;
+        border-left: 30px solid #c41d7f;
+        border-right: 30px solid transparent;
+           content:"←";
+           position:absolute;
+           color:rgba(255,255,255,0.9);
+           font-size:1.3rem;
+           font-weight:bold;
+         }
+}
