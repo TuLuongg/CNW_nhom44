@@ -1,9 +1,9 @@
-import React, { Suspense }  from 'react';
-import ReactDOM from 'react-dom';
-import 'antd/dist/antd.css';
-import { BrowserRouter } from 'react-router-dom';
-import Router from './routers/routes';
-import reportWebVitals from './reportWebVitals';
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom";
+import "antd/dist/antd.css";
+import { BrowserRouter } from "react-router-dom";
+import Router from "./routes/routers";
+import reportWebVitals from "./reportWebVitals";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
